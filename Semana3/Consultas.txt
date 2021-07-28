@@ -1,0 +1,171 @@
+-- COMENTARIO DE LINEA
+
+/*
+ COMENTARIO DE
+ BLOQUE
+ DE VARIAS LINEAS
+ */
+
+SELECT *
+FROM departments d;
+
+SELECT d.department_id, d.department_name 
+FROM departments d ;
+
+SELECT e.first_name Nombre, e.last_name as Apellido, e.salary Salario, e.salary +500 SalarioAumentado
+FROM employees e ;
+
+SELECT e.first_name Nombre, e.last_name as Apellido, e.salary Salario, 12*(e.salary /500) SalarioAumentado
+FROM employees e ;
+
+SELECT e.first_name, e.manager_id, e.manager_id *2
+FROM employees e ;
+
+SELECT e.first_name || ' '|| e.last_name 
+FROM employees e ;
+
+SELECT DISTINCT e.department_id 
+FROM employees e ;
+
+SELECT e.first_name, e.salary, e.department_id 
+FROM employees e 
+WHERE e.department_id =5;
+
+SELECT e.first_name, e.salary, e.department_id 
+FROM employees e 
+WHERE e.first_name ='Adam';
+
+SELECT e.first_name, e.salary, e.department_id 
+FROM employees e 
+WHERE e.department_id =5 AND e.salary >4000;
+
+SELECT e.first_name, e.salary, e.department_id 
+FROM employees e 
+WHERE (e.salary BETWEEN 2000 AND 4000) AND (e.department_id =5);
+
+SELECT e.first_name, e.salary, e.department_id, e.manager_id 
+FROM employees e 
+WHERE e.manager_id IN (100,101,102)
+ORDER BY e.manager_id ASC;
+
+
+SELECT e.first_name, e.salary, e.department_id, e.manager_id 
+FROM employees e 
+WHERE e.first_name LIKE '__l%';
+
+SELECT e.first_name, e.salary, e.department_id, e.manager_id 
+FROM employees e 
+WHERE e.manager_id IS NOT NULL;
+
+
+SELECT AVG(e.salary) Promedio, MAX(e.salary) Máximo, MIN(e.salary) Minimo, COUNT(*) Cantidad, SUM(e.salary) SumaSalario,  SUM(e.salary)/COUNT(*)
+FROM employees e ;
+
+SELECT  e.department_id, AVG(e.salary), COUNT(*) 
+FROM employees e 
+GROUP BY e.department_id ;
+
+SELECT  e.department_id, e.job_id, AVG(e.salary), COUNT(*) 
+FROM employees e 
+GROUP BY e.department_id, e.job_id
+ORDER by e.department_id DESC ;
+
+SELECT  e.department_id, AVG(e.salary)
+FROM employees e 
+GROUP BY e.department_id 
+HAVING AVG(e.salary)>4000 ;
+
+
+SELECT *
+FROM countries c ;
+
+SELECT *
+FROM regions r ;
+
+SELECT c.country_id, c.country_name, c.region_id TablaCountry , r.region_id TablaRegion, r.region_name 
+FROM countries c INNER JOIN regions r 
+ON(c.region_id=r.region_id);
+
+
+SELECT c.country_id, c.country_name, r.region_name 
+FROM countries c INNER JOIN regions r 
+ON(c.region_id=r.region_id);
+
+
+SELECT e.first_name, e.salary, d.department_name 
+FROM employees e JOIN departments d 
+ON (e.department_id=d.department_id);
+
+SELECT e.first_name, e.salary, d.department_name 
+FROM employees e, departments d 
+WHERE e.department_id =d.department_id ;
+
+
+SELECT e.first_name, e.last_name, e.salary, l.city, d.department_name 
+FROM employees e JOIN departments d 
+ON(e.department_id=d.department_id)
+JOIN locations l ON (d.location_id=l.location_id)
+WHERE e.salary >5000
+ORDER by l.city DESC ;
+
+SELECT e.first_name, e.email, e.salary, l.city, d.department_name 
+FROM employees e, departments d, locations l 
+WHERE (e.department_id =d.department_id) AND (d.location_id=l.location_id) AND (e.salary >5000); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
