@@ -1,1 +1,12 @@
 https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc/3.36.0.1
+
+Comando creacion de Tabla
+CREATE TABLE persona (
+	id INTEGER NOT NULL,
+	nombre varchar(30) DEFAULT null,
+	edad Integer DEFAULT null,
+	profesion varchar(30) DEFAULT null,
+	telefono INTEGER DEFAULT null,
+	CONSTRAINT persona_PK PRIMARY KEY (id)
+);
+
